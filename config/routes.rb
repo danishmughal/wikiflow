@@ -1,9 +1,11 @@
 Wikiflow::Application.routes.draw do
 
-  root to: 'Main#home'
+  resources :diagrams
 
   match "/search" => "main#search"
   match "/view" => "main#view-diagram"
+
+  root to: 'Main#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
