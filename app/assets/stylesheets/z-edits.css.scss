@@ -1,0 +1,15 @@
+.result {
+	border: 1px solid #ddd	;
+	height: 280px;
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.title-overlay {
+	opacity: 0.5;
+	height: 75px;
+	background: #000;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
