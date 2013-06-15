@@ -1,8 +1,16 @@
+body {
+	background: #e6e6e6;
+}
+
+.query {
+	margin: 30px 0px;
+}
+
 .result {
-	border: 1px solid #ddd	;
 	height: 280px;
 	position: relative;
 	margin-bottom: 20px;
+	background: #fff;
 }
 
 .title-overlay {
@@ -12,4 +20,10 @@
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
+}
+
+.title {
+	color: #fff;
+	margin: 10px;
+	font-size: 18px;
 }
