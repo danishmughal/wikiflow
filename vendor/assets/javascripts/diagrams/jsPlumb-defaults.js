@@ -1361,7 +1361,7 @@
     /*
      * Class: Overlays.Label
      * A Label overlay. For all different renderer types (SVG/Canvas/VML), jsPlumb draws a Label overlay as a styled DIV.  Version 1.3.0 of jsPlumb
-     * introduced the ability to set css classes on the label; this is now the preferred way for you to style a label.  The 'labelStyle' parameter
+     * introduced the ability to set jsPlumb classes on the label; this is now the preferred way for you to style a label.  The 'labelStyle' parameter
      * is still supported in 1.3.0 but its usage is deprecated.  Under the hood, jsPlumb just turns that object into a bunch of CSS directive that it 
      * puts on the Label's 'style' attribute, so the end result is the same. 
      */
@@ -1369,7 +1369,7 @@
      * Function: Constructor
      * 
      * Parameters:
-     * 	cssClass - optional css class string to append to css class. This string is appended "as-is", so you can of course have multiple classes
+     * 	cssClass - optional jsPlumb class string to append to jsPlumb class. This string is appended "as-is", so you can of course have multiple classes
      *             defined.  This parameter is preferred to using labelStyle, borderWidth and borderStyle.
      * 	label - the label to paint.  May be a string or a function that returns a string.  Nothing will be painted if your label is null or your
      *         label function returns null.  empty strings _will_ be painted.
