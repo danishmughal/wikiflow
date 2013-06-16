@@ -23,9 +23,9 @@
  * things to investigate:
  * 
  * gradients:  https://developer.mozilla.org/en/svg_in_html_introduction
- * css:http://tutorials.jenkov.com/svg/svg-and-css.html
+ * jsPlumb:http://tutorials.jenkov.com/svg/svg-and-jsPlumb.html
  * text on a path: http://www.w3.org/TR/SVG/text.html#TextOnAPath
- * pointer events: https://developer.mozilla.org/en/css/pointer-events
+ * pointer events: https://developer.mozilla.org/en/jsPlumb/pointer-events
  *
  * IE9 hover jquery: http://forum.jquery.com/topic/1-6-2-broke-svg-hover-events
  *
