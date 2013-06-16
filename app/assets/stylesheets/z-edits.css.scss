@@ -14,7 +14,7 @@ body {
 }
 
 .title-overlay {
-	opacity: 0.5;
+	opacity: 0.6;
 	height: 75px;
 	background: #000;
 	position: absolute;
@@ -26,4 +26,19 @@ body {
 	color: #fff;
 	margin: 10px;
 	font-size: 18px;
+}
+
+.diagram {
+	background: #fff;
+	height: 400px;
+}
+
+.comment-box {
+	background: #fff;
+	padding: 20px;
+}
+
+.comment {
+	border-bottom: 1px solid #eee;
+	padding: 20px 0px;
 }
