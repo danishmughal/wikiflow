@@ -8,7 +8,7 @@
     .node {
         border:1px solid black;
         position:absolute !important;
-        width:5em;
+        width:8em;
         height:5em;
         padding: 0.5em;
         z-index:1;
@@ -29,11 +29,33 @@
         ResizeEl(".node");
         Repaint();
         Line("node0", "node1");
-        
+
+        $('#editor').dblclick(function(e) {
+
+            var $target = $(e.target);
+            console.log($target);
+
+            if($target.hasClass('node')){
+                console.log($(e.target).attr('id'));
+                if (!captureEndpoint) {
+                    captureEndpoint = true;
+                    startEnd.start = $(e.target).attr('id');
+                    $('.link-message').html('Select the ending node');
+                    $('.link-message').fadeIn();
+                } else {
+                    captureEndpoint = false;
+                    startEnd.end = $(e.target).attr('id');
+                    Line(startEnd.start, startEnd.end);
+                    $('.link-message').fadeOut();
+                }
+                console.log(startEnd);
+                console.log(captureEndpoint);
+            }
+        }); 
 
     });
-
-
+    var captureEndpoint = false;
+    var startEnd = {};
 
     //// functions ////
 
@@ -68,8 +90,9 @@
 
     // load
     function Load() {
-        var Objs = new Firebase('https://robertdo.firebaseio.com/data/0');
+        var Objs = new Firebase('https://robertdo.firebaseio.com/data/');
         Objs.on('value', function(snapshot) {
+
             console.log(snapshot.val().height);
         });
         // var s="";
@@ -85,11 +108,15 @@
         Line("node0", "node1")
     }
 
+    var links = [];
+
     // connection
     function Line(el1, el2){
         var e0 = jsPlumb.addEndpoint(el1),
                 e1 = jsPlumb.addEndpoint(el2);
         jsPlumb.connect({ source:e0, target:e1 });
+        links.push({start: el1, end: el2});
+        console.log(links);
     }
 
     // clear
@@ -100,13 +127,20 @@
     }
 
     function AddNode() {
-        $('#editor').append('<div id="" class="node">node 0</div>');
+        var lastId = parseInt($('.node').last().attr('id').substring(4));
+        lastId++;
+        $('#editor').append('<div id="node' + lastId + '" class="node"></div>');
         DragEl(".node");
     }
 
+    function AddLink() {
+        $('.link-message').fadeIn();
+    }
+
 </script>
-<div  id="editor">
-  <div id="node0" class="node">node 0</div>
+
+<div id="editor">
+  <div id="node0" class="node" contentEditable='true'>node 0</div>
   <div id="node1" class="node">node 1</div>
 </div>
 <div>
@@ -114,5 +148,9 @@
   <input type='button' value='Load' onclick='Load()'>
   <input type='button' value='Clear' onclick='Clear()'>
   <input type='button' value='Add Node' onclick='AddNode()'>
+  <input type='button' value='Add Link' onclick='AddLink()'>
 
+</div>
+<div class="link-message">
+    Select the starting node
 </div>
