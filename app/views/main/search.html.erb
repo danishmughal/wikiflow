@@ -47,10 +47,13 @@
 
 <script>
 $(document).ready(function() {
+
   $('.result').hover(function() {
-  	$(this).children('.title-overlay').fadeOut(100);
+  	$(this).find('div').slideUp(100);
   },
   function() {
-  	$(this).children('.title-overlay').fadeIn(100);
+  	$(this).find('div').slideDown(50);
   });
+ });
+
 </script>

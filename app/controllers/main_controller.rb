@@ -4,5 +4,10 @@ class MainController < ApplicationController
 
 	def search
 	end
-	
+
+	def view
+	end
+
+	def edit
+	end
 end

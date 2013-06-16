@@ -4,6 +4,7 @@ Wikiflow::Application.routes.draw do
 
   match "/search" => "main#search"
   match "/view" => "main#view-diagram"
+  match "/edit" => "main#edit-diagram"
 
   root to: 'Main#home'
   # The priority is based upon order of creation:
