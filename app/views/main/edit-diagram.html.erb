@@ -28,9 +28,12 @@
         DragEl(".node");
         ResizeEl(".node");
         Repaint();
-        Line("node0", "node1")
+        Line("node0", "node1");
+        
 
     });
+
+
 
     //// functions ////
 
@@ -51,23 +54,31 @@
 
     // save
     function Save() {
-        $(".node").resizable("destroy");
+        // $(".node").resizable("destroy");
+        var db = new Firebase('https://robertdo.firebaseio.com/');
         Objs = [];
         $('.node').each(function() {
             Objs.push({id:$(this).attr('id'), html:$(this).html(),left:$(this).css('left'),top:$(this).css('top'),width:$(this).css('width'),height:$(this).css('height')});
         });
-        console.log(Objs);
+
+        var data = {data: Objs};
+        db.set(data);
+        console.log(JSON.stringify(Objs));
     }
 
     // load
     function Load() {
-        var s="";
-        for(var i in Objs) {
-            var o = Objs[i];
-            console.log(o);
-            s+='<div id="'+ o.id+'" class="node" style="left:'+ o.left+'; top:'+ o.top+'; width:'+ o.width +'; height:'+ o.height +' "> '+ o.html+'</div>';
-        }
-        $('#editor').html(s);
+        var Objs = new Firebase('https://robertdo.firebaseio.com/data/0');
+        Objs.on('value', function(snapshot) {
+            console.log(snapshot.val().height);
+        });
+        // var s="";
+        // for(var i in Objs) {
+        //     var o = Objs[i];
+        //     console.log(o);
+        //     s+='<div id="'+ o.id+'" class="node" style="left:'+ o.left+'; top:'+ o.top+'; width:'+ o.width +'; height:'+ o.height +' "> '+ o.html+'</div>';
+        // }
+        // $('#editor').html(s);
 
         ResizeEl(".node");
         DragEl(".node");
@@ -88,6 +99,11 @@
         $('.point').remove();
     }
 
+    function AddNode() {
+        $('#editor').append('<div id="" class="node">node 0</div>');
+        DragEl(".node");
+    }
+
 </script>
 <div  id="editor">
   <div id="node0" class="node">node 0</div>
@@ -97,5 +113,6 @@
   <input type='button' value='Save' onclick='Save()'>
   <input type='button' value='Load' onclick='Load()'>
   <input type='button' value='Clear' onclick='Clear()'>
+  <input type='button' value='Add Node' onclick='AddNode()'>
 
 </div>
