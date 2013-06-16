@@ -3,7 +3,7 @@ Wikiflow::Application.routes.draw do
   devise_for :users
   devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
 
-  resources :diagrams
+  match '/diagram/make' => 'diagrams#make'
 
   match "/search" => "main#search"
   match "/view" => "main#view-diagram"
@@ -12,6 +12,15 @@ Wikiflow::Application.routes.draw do
   root to: 'Main#home'
 
   match '/search' => 'main#search'
+
+
+  # API Calls to manage firebase calls using data from the frontend JS applet
+  get '/diagrams/:id' => 'diagrams#show'
+  get '/diagrams/:id/subdiagrams' => 'diagrams#showsubdiagrams'
+
+  post '/diagrams/create' => 'diagrams#create'
+  post '/diagrams/:id/create' => 'diagrams#createsubdiagram'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

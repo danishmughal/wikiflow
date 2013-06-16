@@ -1,5 +1,5 @@
 class DiagramsController < ApplicationController
-
+	
 	def new
 	end
 
@@ -7,6 +7,10 @@ class DiagramsController < ApplicationController
 	end
 
 	def show
+		respond_to do |format|
+			format.json
+			render partial: "diagrams/show.json"
+		end
 	end
 
 	def index
@@ -19,6 +23,9 @@ class DiagramsController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	def make
 	end
 
 
