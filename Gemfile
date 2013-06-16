@@ -42,3 +42,4 @@ gem "handlebars", "~> 0.4.0"
 
 #Added by me 
 gem 'devise'
+gem 'firebase'
